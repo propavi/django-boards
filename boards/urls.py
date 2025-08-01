@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from .models import Board
+from django.urls import path
+from . import views
 
-def home(request):
-    boards = Board.objects.all()
-    return render(request, 'home.html', {'boards': boards})
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('boards/<int:pk>/', views.board_topics, name='board_topics'),
+]
